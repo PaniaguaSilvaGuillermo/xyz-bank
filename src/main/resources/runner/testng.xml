@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="">
+<suite name="XYZ Bank">
 
 	<listeners>
 		<listener class-name="org.uncommons.reportng.HTMLReporter" />
@@ -8,10 +8,16 @@
 		<listener class-name="listeners.CustomListeners" />
 	</listeners>
 
-	<test name="Test">
+	<test name="Bank Manager Login Test">
 		<classes>
-			<class name="tests." />
+			<class name="tests.BankManagerLoginTest" />
 		</classes>
-	</test> <!--Test -->
+	</test> <!--Bank Manager Login Test -->
+	
+	<test name="Add Customer Test">
+		<classes>
+			<class name="tests.AddCustomerTest"/>
+		</classes>
+	</test> <!--Add Customer Test -->
 
-</suite> <!--  -->
+</suite> <!-- XYZ Bank -->

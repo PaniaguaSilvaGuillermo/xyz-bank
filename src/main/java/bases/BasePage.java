@@ -134,7 +134,7 @@ public class BasePage {
 				options.setExperimentalOption("prefs", prefs);
 				options.addArguments("-disable-extensions");
 				options.addArguments("-disable-infobars");
-				driver = new ChromeDriver();
+				driver = new ChromeDriver(options);
 				log.debug("Chrome launched.");
 
 			} else if (config.getProperty("browser").equals("ie")) {
@@ -150,11 +150,11 @@ public class BasePage {
 				driver = new OperaDriver();
 			}
 
-			driver.get(config.getProperty("siteUrl"));
-			log.debug("Navigated to " + config.getProperty("siteUrl") + ".");
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(Integer.parseInt(config.getProperty("implicitWait")),
 					TimeUnit.SECONDS);
+			driver.get(config.getProperty("siteUrl"));
+			log.debug("Navigated to " + config.getProperty("siteUrl") + ".");
 			wait = new WebDriverWait(driver, 5);
 		}
 	}
@@ -249,6 +249,11 @@ public class BasePage {
 		Select select = new Select(dropdown);
 		select.selectByVisibleText(value);
 		test.log(LogStatus.INFO, "Selecting from dropdown: " + locator + "; value: " + value);
+	}
+	
+	public void returnHome(){
+		
+		click("button[ng-click='home()']");
 	}
 	
 	public static void quit() {
